@@ -7,8 +7,10 @@ export default {
 </script>
 
 <template>
-    <SocialLinks />
-    <AppNav />
+    <header>
+        <SocialLinks />
+        <AppNav />
+    </header>
 </template>
 
 <style scoped lang="scss"></style>
