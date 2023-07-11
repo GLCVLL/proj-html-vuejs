@@ -15,7 +15,7 @@ a {
     color: white;
     text-decoration: none;
     margin: 0 5px;
-    padding: 5px;
+    padding: 2px 5px;
     border-radius: 5px;
 }
 
