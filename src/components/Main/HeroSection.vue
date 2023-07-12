@@ -11,7 +11,7 @@ export default {
                 },
 
                 {
-                    image: '../../src/assets/img/b.png',
+                    image: '../../src/assets/img/c.png',
                     title: 'Welcome to DogMilo Pets',
                     text: 'Lorem ipsum is simply dummy text of the printing and typesetting industry.',
                 },
@@ -50,15 +50,17 @@ export default {
         <div id="prev" @click="goToPrev" v-show="currentIndex">
             <img src="../../assets/img/left-arrow.png" />
         </div>
-        <div class="container gallery d-flex align-items-center">
-            <figure v-for="(picture, i) in pictures" v-show="currentIndex === i">
-                <img :src="picture.image" :alt="picture.title">
-                <figcaption>
+        <div class="gallery">
+            <figure v-for="(picture, i) in pictures" v-show="currentIndex === i" :key="i"
+                :style="{ backgroundImage: `url(${picture.image})` }" class="carousel-item">
+                <div class="carousel-content container">
                     <h3>{{ picture.title }}</h3>
                     <p>{{ picture.text }}</p>
-                    <button>Get Started</button>
-                    <a href="#"><img src="../../assets/img/play.png" alt="playbutton"></a>
-                </figcaption>
+                    <div class="d-flex align-items-center">
+                        <button>Get Started</button>
+                        <a href="#"><img src="../../assets/img/play.png" alt="playbutton"></a>
+                    </div>
+                </div>
             </figure>
         </div>
         <div id="next" @click="goToNext" v-show="!isLastPicture">
@@ -68,6 +70,8 @@ export default {
 </template>
 
 <style scoped lang="scss">
+@use '../../assets/scss/_vars.scss' as *;
+
 section {
     height: 500px;
     position: relative;
@@ -99,7 +103,42 @@ section {
     }
 }
 
+button {
+    background-color: $bg-primary-color;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    transition: background-color 1s;
+
+    &:hover {
+        background-color: $bg-hover-button-color;
+        color: white
+    }
+}
+
+a {
+    width: 3%;
+    padding: 5px;
+    background-color: #70d0f7;
+    border-radius: 7px;
+    margin-left: 5px;
+}
+
 #next {
     right: 0;
+}
+
+.carousel-item {
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .carousel-content {
+        color: white;
+    }
 }
 </style>
